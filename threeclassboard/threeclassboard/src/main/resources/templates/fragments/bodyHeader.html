@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/header :: header">
+
+<div class="header text-white" th:fragment="bodyHeader" align="center" style="margin-bottom:0;">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="margin-top: -1.5rem; background: #353a42;" >
+        <div class="container-fluid " style="width:60%">
+        <a class="navbar-brand" href="/board/List">Logo</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link"href="#">Link1</a></li>
+                <li class="nav-item"><a class="nav-link"href="#">Link1</a></li>
+                <li class="nav-item"><a class="nav-link"href="#">Link1</a></li>
+            </ul>
+            <button type="button" class="btn btn-primary">
+                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" style="color: white; text-decoration: none;">로그인</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" style="color: white; text-decoration: none;">로그아웃</a>
+            </button>
+        </div>
+    </nav>
+
+<!--    <div style="padding-bottom: 2.5rem; padding-top: 2.5rem">-->
+<!--        <a href="/" style="text-decoration: none;"><h3 style="color:black;padding-bottom: 0;">3반 게시판</h3></a>-->
+<!--&lt;!&ndash;        <th:block sec:authorize="isAuthenticated()"><h2 class="text-muted">반갑습니다.<span sec:authentication="principal.username"></span>님</h2></th:block>&ndash;&gt;-->
+
+
+<!--    </div>-->
+<!--        <a sec:authorize="isAnonymous()" th:href="@{/user/signup}">회원가입</a>-->
+<!--        <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}">내정보</a>-->
+<!--        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">어드민</a>-->
+</div>

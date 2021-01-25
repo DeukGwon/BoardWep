@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body style="background: #d7e8ff;">
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<div class="container"style="background-color:white; padding: inherit; padding-left: 2.5rem; padding-right: 2.5rem;">
+    <h3>3반 게시판</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>조회수</th>
+                <th>날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boards}">
+                <td><a style="text-decoration: none;"th:href="@{'/post/'} + ${board.id}" th:text="${board.board_subject}"></a></td>
+                <td th:text="${board.member?.name}"></td>
+                <td th:text="${board.board_count}"></td>
+                <td th:text="${board.board_date}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+    <span th:each="pageNum : ${pageList}" th:inline="text">
+        <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    </span>
+    </div>
+
+    <div style="text-align:right; padding-bottom:1rem"><button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" th:href="@{/board/new}">글쓰기</a></button></div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
